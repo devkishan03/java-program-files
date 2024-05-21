@@ -24,7 +24,7 @@ public class Mypractice {
             System.out.println(integer);
         }
         System.err.println(st.size());
-          int arr[];
-          arr.
+          int arr[]=new int[10];
+          System.out.println(arr.length);
     }
 }
