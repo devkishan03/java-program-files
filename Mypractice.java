@@ -1,5 +1,8 @@
 
+import java.util.Arrays;
+import java.util.Set;
 import java.util.Stack;
+import java.util.TreeSet;
 
 public class Mypractice {
     public static void main(String[] args) {
@@ -13,6 +16,15 @@ public class Mypractice {
         for (Integer integer : stk) {
             System.out.println(integer);
         }
+        Set<Integer> st = new TreeSet<>();
 
+        st.add(2);
+        st.add(2);
+        for (Integer integer : st) {
+            System.out.println(integer);
+        }
+        System.err.println(st.size());
+          int arr[];
+          arr.
     }
 }
