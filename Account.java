@@ -8,7 +8,7 @@ class NegativeAmmount extends Exception {
 
 class InsufficientBalance extends Exception {
     public String toString() {
-        return "Insufficient balance, minimum balance should be maintain 1000";
+        return "Insufficient balance, minimum balance should be maintain 1000,";
     }
 }
 
@@ -28,11 +28,8 @@ public class Account {
         accnumber = number;
         acctype = type;
         mobilenumber = monumber;
-        if (balance >= 1000) {
-            accbalance = balance;
-        } else {
-            System.out.println("Account should be minimum balance of 1000");
-        }
+        accbalance = balance;
+
     }
 
     public void depositMoney(double ammount) {
@@ -56,21 +53,22 @@ public class Account {
                 accbalance -= ammount;
             }
         } catch (InsufficientBalance e) {
-            System.out.println(e);
+            System.out.println(e + "Remaining acc balance:" + (accbalance - ammount));
         }
     }
 
     public void display() {
         System.out.println("acc number:" + accnumber + "\n" + "name:" + nameofholder + "\n" + "acc type:" + acctype
-                + "\n" + "Account balance:" + accbalance);
+                + "\n" + "Account balance:" + accbalance + "\n" + "Mobie number:" + mobilenumber);
     }
 
     public static void main(String args[]) {
 
-        Account a1 = new Account("kishan", "123", 's', "234", 2000);
+        Account a1 = new Account("kishan", "123", 's', "9999999999", 2000);
 
-        a1.depositMoney(1000);
-        a1.withdrowMoney(3000);
+        a1.depositMoney(2000);
+        a1.withdrowMoney(3500);
+        a1.display();
 
     }
 }
