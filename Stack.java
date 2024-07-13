@@ -23,60 +23,62 @@ class EmptyStack extends Exception {
 
 public class Stack {
     private int arr[];
-    private int n, m, top;
+    private int n, top;
 
     public Stack(int size) {
-        top = m = n = size - 1;
+        top = size - 1;
+        n = -1;
         arr = new int[size];
     }
 
-    public void push(int number) {
-        try {
-            if (n < 0) {
-                throw new StackFull();
-            } else {
-                arr[n] = number;
-                n--;
-            }
-        } catch (StackFull e) {
-            System.out.println(e);
+    private void push(int number) throws StackFull {
+        if (n == top) {
+            throw new StackFull();
+        } else {
+            arr[++n] = number;
         }
 
     }
 
-    public int pop() {
-        try {
-            if (m < 0) {
-                throw new EmptyStack();
-            } else {
-                return arr[m--];
-            }
-
-        } catch (EmptyStack e) {
-            System.out.println(e);
-            return 0;
+    private int pop() throws EmptyStack {
+        if (n == -1) {
+            throw new EmptyStack();
+        } else {
+            return arr[n--];
         }
 
     }
 
-    public void testPush() throws StackFull {
+    public void testPush() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter value want to push:");
         int a = sc.nextInt();
-        push(a);
-        sc.close();
+
+        try {
+            push(a);
+        } catch (StackFull sf) {
+            System.out.println(sf);
+        }
+
     }
 
-    public int testPop() throws EmptyStack {
-        return pop();
+    public void testPop() {
+        try {
+            System.out.println(pop());
+        } catch (EmptyStack es) {
+            System.out.println(es);
+        }
+
     }
 
     public static void main(String[] args) {
-        Stack ss = new Stack(5);
-        ss.push(10);
-        ss.push(12);
-        ss.push(9);
-        System.out.println(ss.pop());
-        System.out.println(ss.pop());
+        Stack ss = new Stack(2);
+        ss.testPush();
+        ss.testPush();
+        // ss.testPush();
+        ss.testPop();
+        ss.testPop();
+        ss.testPop();
 
     }
 }
