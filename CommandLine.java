@@ -9,7 +9,6 @@ public class CommandLine
        
      int a=Integer.parseInt(args[1]);
      int b=Integer.parseInt(args[2]);
-
            switch(c){
              case '+':System.out.println(a+b);
                       break;
